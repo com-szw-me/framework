@@ -15,7 +15,9 @@ public class ContextInterceptorAutoConfiguration extends WebMvcConfigurerAdapter
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(contextInterceptor());
+        registry.addInterceptor(contextInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
 
     @Bean
